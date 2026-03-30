@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "Nadi",
     "section": "",
-    "text": "University City, Philadelphia\nRouting pedestrians through shade using LiDAR-derived shadow models across 23,486 street segments\nTry the Interactive Map → View Results →\nStandard navigation apps optimize for distance and time. They don’t account for thermal comfort — which means pedestrians often get routed through sun-exposed corridors during Philadelphia’s increasingly intense summers, where surface temperatures can exceed 130°F in direct sun.\nNadi models shadow coverage across University City’s pedestrian network using high-resolution LiDAR data, then routes walkers through shadier paths. A typical detour of 10-15% yields 30-50% more shade coverage."
+    "text": "University City, Philadelphia\nRouting pedestrians through shade using LiDAR-derived shadow models across 23,486 street segments\nTry the Interactive Map → View Results →\nStandard navigation apps optimize for distance and time. They don’t account for thermal comfort, which means pedestrians often get routed through sun-exposed corridors during Philadelphia’s increasingly intense summers, where surface temperatures can exceed 130°F in direct sun.\nNadi models shadow coverage across University City’s pedestrian network using high-resolution LiDAR data, then routes walkers through shadier paths. A typical detour of 10-15% yields 30-50% more shade coverage."
   },
   {
     "objectID": "index.html#introduction",
@@ -214,7 +214,7 @@
     "href": "methodology.html#route-optimization",
     "title": "Methodology",
     "section": "3. Route optimization",
-    "text": "3. Route optimization\nThe street network is represented as an undirected planar graph. Each edge carries segment length and shade scores for all 8 scenarios.\nRoutes are calculated using Dijkstra’s algorithm with two cost functions:\nShortest path: \\[\\text{cost} = \\text{length}\\]\nShade-weighted path: \\[\\text{cost} = \\text{length} \\times (1 - 0.3 \\times \\text{shade})\\]\nA fully shaded segment (\\(\\text{shade} = 1\\)) has an effective cost of \\(\\text{length} \\times 0.7\\). An unshaded segment costs its full length. The weight \\(w = 0.3\\) was chosen to allow meaningful shade improvement without producing impractical detours.\nThree test routes to SEPTA stations were analyzed:\n\nSpruce St & 38th → 40th St Station (~780m)\nLancaster Ave & 36th → 34th St Station (~470m)\nSpruce Hill → 46th St Station (~580m)"
+    "text": "3. Route optimization\nThe street network is represented as an undirected planar graph. Each edge carries segment length and shade scores for all 8 scenarios.\nRoutes are calculated using Dijkstra’s algorithm with two cost functions:\nShortest path: \\[\\text{cost} = \\text{length}\\]\nShade-weighted path: \\[\\text{cost} = \\text{length} \\times (1 - 0.3 \\times \\text{shade})\\]\nA fully shaded segment has an effective cost of \\(\\text{length} \\times 0.7\\). An unshaded segment costs its full length. The weight \\(w = 0.3\\) was chosen to allow meaningful shade improvement without producing impractical detours.\nThree test routes to SEPTA stations were analyzed:\n\nSpruce St & 38th to 40th St Station (~780m)\nLancaster Ave & 36th to 34th St Station (~470m)\nSpruce Hill to 46th St Station (~580m)"
   },
   {
     "objectID": "methodology.html#visualization",
@@ -228,7 +228,7 @@
     "href": "methodology.html#technical-specifications",
     "title": "Methodology",
     "section": "Technical specifications",
-    "text": "Technical specifications\nCoordinate systems - Analysis: Pennsylvania State Plane South (EPSG:2272), US Survey Feet - Output: WGS84 (EPSG:4326)\nLiDAR specs - Point density: 8-15 pts/m² - Vertical accuracy: ~10cm RMSE - Classification: ASPRS LAS 1.4 - Processing: Rasterized to 3-foot grid cells\nComputational performance - LiDAR processing: ~30 minutes (18 tiles) - Shade calculation: ~2 hours (8 scenarios × 23k segments) - Route optimization: &lt;1 second per route pair"
+    "text": "Technical specifications\nCoordinate systems - Analysis: Pennsylvania State Plane South (EPSG:2272), US Survey Feet - Output: WGS84 (EPSG:4326)\nLiDAR specs - Point density: 8-15 pts/m² - Vertical accuracy: ~10cm RMSE - Classification: ASPRS LAS 1.4 - Processing: Rasterized to 3-foot grid cells\nComputational performance - LiDAR processing: ~30 minutes (18 tiles) - Shade calculation: ~2 hours (8 scenarios x 23k segments) - Route optimization: less than 1 second per route pair"
   },
   {
     "objectID": "methodology.html#validation-approaches",
@@ -641,7 +641,7 @@
     "href": "index.html#how-it-works",
     "title": "Nadi",
     "section": "How it works",
-    "text": "How it works\nShadow coverage is calculated geometrically for each of 23,486 street segments using real building heights and individual tree heights extracted from USGS LiDAR point clouds. Sun position is modeled using pvlib across 8 temporal scenarios — summer, winter, and spring/fall mornings, middays, and evenings.\nFor each building or tree at height \\(h\\) with sun at altitude \\(\\alpha\\):\n\\[\\text{shadow\\_length} = \\frac{h}{\\tan(\\alpha)}\\]\nShade scores weight buildings at 60% and trees at 40%, reflecting buildings’ more consistent shadow geometry. Routes are calculated using Dijkstra’s algorithm with a shade-weighted cost function:\n\\[\\text{cost} = \\text{length} \\times (1 - 0.3 \\times \\text{shade})\\]\nA fully shaded segment effectively costs 30% less than an unshaded one of the same length, nudging the algorithm toward shadier paths without forcing extreme detours."
+    "text": "How it works\nShadow coverage is calculated geometrically for each of 23,486 street segments using real building heights and individual tree heights extracted from USGS LiDAR point clouds. Sun position is modeled using pvlib across 8 temporal scenarios: summer, winter, and spring/fall mornings, middays, and evenings.\nFor each building or tree at height \\(h\\) with sun at altitude \\(\\alpha\\):\n\\[\\text{shadow\\_length} = \\frac{h}{\\tan(\\alpha)}\\]\nShade scores weight buildings at 60% and trees at 40%, reflecting buildings’ more consistent shadow geometry. Routes are calculated using Dijkstra’s algorithm with a shade-weighted cost function:\n\\[\\text{cost} = \\text{length} \\times (1 - 0.3 \\times \\text{shade})\\]\nA fully shaded segment effectively costs 30% less than an unshaded one of the same length, nudging the algorithm toward shadier paths without forcing extreme detours."
   },
   {
     "objectID": "index.html#results-summary",
@@ -809,21 +809,21 @@
     "href": "results.html#network-coverage",
     "title": "Results",
     "section": "Network coverage",
-    "text": "Network coverage\nThe analysis covers 23,486 pedestrian street segments across 4.2 square miles of University City, with LiDAR height data available for 99.7% of buildings in the study area. Eight temporal scenarios were modeled — summer, winter, and spring/fall at morning, midday, and evening sun positions."
+    "text": "Network coverage\nThe analysis covers 23,486 pedestrian street segments across 4.2 square miles of University City, with LiDAR height data available for 99.7% of buildings in the study area. Eight temporal scenarios were modeled: summer, winter, and spring/fall at morning, midday, and evening sun positions."
   },
   {
     "objectID": "results.html#shade-varies-dramatically-by-time-of-day-and-season",
     "href": "results.html#shade-varies-dramatically-by-time-of-day-and-season",
     "title": "Results",
     "section": "Shade varies dramatically by time of day and season",
-    "text": "Shade varies dramatically by time of day and season\n\nMean shade coverage ranges from 61.5% on winter mornings to 24.2% on summer middays — a 2.5x difference across the same street network. The network that appears green (well-shaded) in winter reads almost entirely red (exposed) at summer midday.\n\n\n\n\nScenario\nMean shade\nSegments above 50% shade\n\n\n\n\nWinter morning\n61.5%\n59%\n\n\nWinter midday\n41.3%\n38.5%\n\n\nSummer evening\n38.6%\n33.7%\n\n\nSummer morning\n34.3%\n26.1%\n\n\nSpring midday\n32.4%\n23.6%\n\n\nFall midday\n31.8%\n22.3%\n\n\nSummer midday\n24.2%\n11.2%\n\n\nWinter evening\n0%\n0%\n\n\n\n\nThe distribution of shade scores also shifts with season. Summer midday is right-skewed — most segments have low coverage. Winter morning is left-skewed — most segments are well-shaded. Spring and fall sit closer to a normal distribution."
+    "text": "Shade varies dramatically by time of day and season\n\nMean shade coverage ranges from 61.5% on winter mornings to 24.2% on summer middays, a 2.5x difference across the same street network. The network that appears green (well-shaded) in winter reads almost entirely red (exposed) at summer midday.\n\n\n\n\nScenario\nMean shade\nSegments above 50% shade\n\n\n\n\nWinter morning\n61.5%\n59%\n\n\nWinter midday\n41.3%\n38.5%\n\n\nSummer evening\n38.6%\n33.7%\n\n\nSummer morning\n34.3%\n26.1%\n\n\nSpring midday\n32.4%\n23.6%\n\n\nFall midday\n31.8%\n22.3%\n\n\nSummer midday\n24.2%\n11.2%\n\n\nWinter evening\n0%\n0%\n\n\n\n\nThe distribution of shade scores also shifts with season. Summer midday is right-skewed; most segments have low coverage. Winter morning is left-skewed; most segments are well-shaded. Spring and fall sit closer to a normal distribution."
   },
   {
     "objectID": "index.html#what-the-data-shows",
     "href": "index.html#what-the-data-shows",
     "title": "Nadi",
     "section": "What the data shows",
-    "text": "What the data shows\nShade availability varies by a factor of 2.5x across the year — from 61.5% average coverage on winter mornings to 24.2% on summer middays. That variation is what makes time-aware routing useful.\n\nBuildings and trees contribute differently depending on sun angle. In winter, low sun angles cast long building shadows that dominate coverage (74.4% contribution). In summer, the sun moves overhead and tree canopy becomes the primary shade source (35.9% vs 16.3% from buildings) — which has direct implications for where street tree investments have the most pedestrian impact.\n\nThe spatial pattern of shade deserts — concentrated on Market Street, Chestnut Street, and University Avenue during summer midday — points to specific corridors where canopy investment would have the highest impact."
+    "text": "What the data shows\nShade availability varies by a factor of 2.5x across the year, from 61.5% average coverage on winter mornings to 24.2% on summer middays. That variation is what makes time-aware routing useful.\n\nBuildings and trees contribute differently depending on sun angle. In winter, low sun angles cast long building shadows that account for 74.4% of network shade coverage. In summer, the sun moves overhead and building shadows shorten considerably; tree canopy becomes the dominant source at 35.9%, compared to 16.3% from buildings. This has a direct implication for street tree investment: canopy programs have the most measurable impact on pedestrian thermal comfort during the months when it matters most.\n\nThe spatial pattern of shade deserts concentrates on Market Street, Chestnut Street, and University Avenue during summer midday, the corridors with the most pedestrian activity."
   },
   {
     "objectID": "index.html#results",
@@ -837,7 +837,7 @@
     "href": "index.html#data-sources",
     "title": "Nadi",
     "section": "Data sources",
-    "text": "Data sources\n\n\n\nDataset\nSource\n\n\n\n\nLiDAR point clouds\nUSGS 3D Elevation Program (2018-2020)\n\n\nBuilding footprints\nPennsylvania Spatial Data Access (PASDA)\n\n\nStreet network\nOpenStreetMap via OSMnx\n\n\nTransit stops\nSEPTA GTFS\n\n\n\nStack: Python, GeoPandas, Rasterio, NetworkX, pvlib, Leaflet.js, Quarto\n\nKavana Raju | University of Pennsylvania kavana@upenn.edu | GitHub"
+    "text": "Data sources\n\n\n\nDataset\nSource\n\n\n\n\nLiDAR point clouds\nUSGS 3D Elevation Program (2018-2020)\n\n\nBuilding footprints\nPennsylvania Spatial Data Access (PASDA)\n\n\nStreet network\nOpenStreetMap via OSMnx\n\n\nTransit stops\nSEPTA GTFS\n\n\n\nStack: Python, GeoPandas, Rasterio, NetworkX, pvlib, Leaflet.js, Quarto\n\nKavana Raju | University of Pennsylvania\nkavana@upenn.edu | GitHub"
   },
   {
     "objectID": "methodology.html#data",
@@ -879,28 +879,28 @@
     "href": "interactive.html#using-the-map",
     "title": "Interactive Map",
     "section": "Using the map",
-    "text": "Using the map\nSelect a scenario from the dropdown, then click to place an origin (blue marker) and a destination (pink marker). Routes calculate automatically.\nThe street network is colored by shade coverage — red segments are fully exposed, green segments are well-shaded. The pink route is the shortest path by distance; the blue route maximizes shade using the weighted cost function."
+    "text": "Using the map\nSelect a scenario from the dropdown, then click to place an origin (blue marker) and a destination (red marker). Routes calculate automatically.\nThe street network is colored by shade coverage; red segments are fully exposed, green segments are well-shaded. The pink route is the shortest path by distance. The blue route maximizes shade using a weighted cost function."
   },
   {
     "objectID": "interactive.html#how-routes-are-calculated",
     "href": "interactive.html#how-routes-are-calculated",
     "title": "Interactive Map",
     "section": "How routes are calculated",
-    "text": "How routes are calculated\nShortest path: cost = length\nShadiest path: cost = length × (1 - 0.3 × shade)\nA fully shaded segment costs 30% less than an equivalent unshaded one. The weight of 0.3 was chosen to allow meaningful shade improvement without producing impractical detours — typically 10-15% extra distance for 30-50% more shade.\nRoute calculation runs entirely client-side using precomputed edge weights across four JSON files (nodes, edges, scenarios, metadata). No server required."
+    "text": "How routes are calculated\nShortest path: cost = length\nShadiest path: cost = length × (1 - 0.3 × shade)\nA fully shaded segment costs 30% less than an equivalent unshaded one. The weight of 0.3 was chosen to allow meaningful shade improvement without producing impractical detours, typically 10-15% extra distance for 30-50% more shade.\nRoute calculation runs entirely client-side using precomputed edge weights across four JSON files (nodes, edges, scenarios, metadata). No server required."
   },
   {
     "objectID": "results.html#buildings-and-trees-contribute-differently",
     "href": "results.html#buildings-and-trees-contribute-differently",
     "title": "Results",
     "section": "Buildings and trees contribute differently",
-    "text": "Buildings and trees contribute differently\n\nIn winter, low sun angles cast long building shadows that account for 74.4% of network shade coverage. In summer, the sun moves overhead and building shadows shorten considerably — tree canopy becomes the dominant source at 35.9%, compared to 16.3% from buildings.\nThis has a direct implication for street tree investment: canopy programs have the most measurable impact on pedestrian thermal comfort during the months when it matters most."
+    "text": "Buildings and trees contribute differently\n\nIn winter, low sun angles cast long building shadows that account for 74.4% of network shade coverage. In summer, the sun moves overhead and building shadows shorten considerably; tree canopy becomes the dominant source at 35.9%, compared to 16.3% from buildings.\nThis has a direct implication for street tree investment: canopy programs have the most measurable impact on pedestrian thermal comfort during the months when it matters most."
   },
   {
     "objectID": "results.html#shade-deserts-concentrate-on-commercial-corridors",
     "href": "results.html#shade-deserts-concentrate-on-commercial-corridors",
     "title": "Results",
     "section": "Shade deserts concentrate on commercial corridors",
-    "text": "Shade deserts concentrate on commercial corridors\n\nDuring summer midday, the worst-shaded segments (0-20% coverage) concentrate on Market Street, Chestnut Street, and University Avenue — the corridors with the most pedestrian activity. Tree-lined residential streets like Spruce, Pine, and Locust Walk maintain significantly higher coverage."
+    "text": "Shade deserts concentrate on commercial corridors\n\nDuring summer midday, the worst-shaded segments (0-20% coverage) concentrate on Market Street, Chestnut Street, and University Avenue. Tree-lined residential streets like Spruce, Pine, and Locust Walk maintain significantly higher coverage."
   },
   {
     "objectID": "results.html#route-comparisons",
@@ -914,6 +914,6 @@
     "href": "results.html#limitations",
     "title": "Results",
     "section": "Limitations",
-    "text": "Limitations\nThe current model assumes clear sky conditions and uses LiDAR data from 2018-2020, so it does not reflect recent construction or canopy changes. Tree shade is modeled using a fixed seasonal weight rather than species-specific leaf-on/leaf-off adjustment. The model captures shade as area coverage on a buffered street segment, not as a continuous thermal comfort index — humidity, wind, and surface reflectance are not included."
+    "text": "Limitations\nThe current model assumes clear sky conditions and uses LiDAR data from 2018-2020, so it does not reflect recent construction or canopy changes. Tree shade is modeled using a fixed seasonal weight rather than species-specific leaf-on/leaf-off adjustment. The model captures shade as area coverage on a buffered street segment, not as a continuous thermal comfort index; humidity, wind, and surface reflectance are not included."
   }
 ]

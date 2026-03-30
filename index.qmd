@@ -24,7 +24,7 @@ Routing pedestrians through shade using LiDAR-derived shadow models across 23,48
 
 ---
 
-Standard navigation apps optimize for distance and time. They don't account for thermal comfort — which means pedestrians often get routed through sun-exposed corridors during Philadelphia's increasingly intense summers, where surface temperatures can exceed 130°F in direct sun.
+Standard navigation apps optimize for distance and time. They don't account for thermal comfort, which means pedestrians often get routed through sun-exposed corridors during Philadelphia's increasingly intense summers, where surface temperatures can exceed 130°F in direct sun.
 
 Nadi models shadow coverage across University City's pedestrian network using high-resolution LiDAR data, then routes walkers through shadier paths. A typical detour of 10-15% yields 30-50% more shade coverage.
 
@@ -32,7 +32,7 @@ Nadi models shadow coverage across University City's pedestrian network using hi
 
 ## How it works
 
-Shadow coverage is calculated geometrically for each of 23,486 street segments using real building heights and individual tree heights extracted from USGS LiDAR point clouds. Sun position is modeled using `pvlib` across 8 temporal scenarios — summer, winter, and spring/fall mornings, middays, and evenings.
+Shadow coverage is calculated geometrically for each of 23,486 street segments using real building heights and individual tree heights extracted from USGS LiDAR point clouds. Sun position is modeled using `pvlib` across 8 temporal scenarios: summer, winter, and spring/fall mornings, middays, and evenings.
 
 For each building or tree at height $h$ with sun at altitude $\alpha$:
 
@@ -50,15 +50,15 @@ A fully shaded segment effectively costs 30% less than an unshaded one of the sa
 
 ## What the data shows
 
-Shade availability varies by a factor of 2.5x across the year — from 61.5% average coverage on winter mornings to 24.2% on summer middays. That variation is what makes time-aware routing useful.
+Shade availability varies by a factor of 2.5x across the year, from 61.5% average coverage on winter mornings to 24.2% on summer middays. That variation is what makes time-aware routing useful.
 
 ![](figures/summer_vs_winter_comparison.png){width=100%}
 
-Buildings and trees contribute differently depending on sun angle. In winter, low sun angles cast long building shadows that dominate coverage (74.4% contribution). In summer, the sun moves overhead and tree canopy becomes the primary shade source (35.9% vs 16.3% from buildings) — which has direct implications for where street tree investments have the most pedestrian impact.
+Buildings and trees contribute differently depending on sun angle. In winter, low sun angles cast long building shadows that account for 74.4% of network shade coverage. In summer, the sun moves overhead and building shadows shorten considerably; tree canopy becomes the dominant source at 35.9%, compared to 16.3% from buildings. This has a direct implication for street tree investment: canopy programs have the most measurable impact on pedestrian thermal comfort during the months when it matters most.
 
 ![](figures/building_vs_tree_contribution.png){width=100%}
 
-The spatial pattern of shade deserts — concentrated on Market Street, Chestnut Street, and University Avenue during summer midday — points to specific corridors where canopy investment would have the highest impact.
+The spatial pattern of shade deserts concentrates on Market Street, Chestnut Street, and University Avenue during summer midday, the corridors with the most pedestrian activity.
 
 ![](figures/shade_corridors_map.png){width=100%}
 
@@ -113,5 +113,5 @@ Summer midday
 
 ---
 
-**Kavana Raju** | University of Pennsylvania
-[kavana@upenn.edu](mailto:kavana@upenn.edu) | [GitHub](https://github.com/kavanaraju/Pedestrian-Shade-Routing)
+**Kavana Raju** | University of Pennsylvania  
+[kavana@upenn.edu](mailto:kavana@upenn.edu) | [GitHub](https://github.com/kavanaraju/nadi)

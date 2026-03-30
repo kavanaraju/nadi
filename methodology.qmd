@@ -72,13 +72,13 @@ $$\text{cost} = \text{length}$$
 **Shade-weighted path:**
 $$\text{cost} = \text{length} \times (1 - 0.3 \times \text{shade})$$
 
-A fully shaded segment ($\text{shade} = 1$) has an effective cost of $\text{length} \times 0.7$. An unshaded segment costs its full length. The weight $w = 0.3$ was chosen to allow meaningful shade improvement without producing impractical detours.
+A fully shaded segment has an effective cost of $\text{length} \times 0.7$. An unshaded segment costs its full length. The weight $w = 0.3$ was chosen to allow meaningful shade improvement without producing impractical detours.
 
 Three test routes to SEPTA stations were analyzed:
 
-1. Spruce St & 38th → 40th St Station (~780m)
-2. Lancaster Ave & 36th → 34th St Station (~470m)
-3. Spruce Hill → 46th St Station (~580m)
+1. Spruce St & 38th to 40th St Station (~780m)
+2. Lancaster Ave & 36th to 34th St Station (~470m)
+3. Spruce Hill to 46th St Station (~580m)
 
 ---
 
@@ -104,8 +104,8 @@ The interactive application runs Dijkstra in the browser using precomputed edge 
 
 **Computational performance**
 - LiDAR processing: ~30 minutes (18 tiles)
-- Shade calculation: ~2 hours (8 scenarios × 23k segments)
-- Route optimization: <1 second per route pair
+- Shade calculation: ~2 hours (8 scenarios x 23k segments)
+- Route optimization: less than 1 second per route pair
 
 ---
 

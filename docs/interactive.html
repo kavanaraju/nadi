@@ -159,15 +159,15 @@ ul.task-list li input[type="checkbox"] {
 <hr>
 <section id="using-the-map" class="level2">
 <h2 class="anchored" data-anchor-id="using-the-map">Using the map</h2>
-<p>Select a scenario from the dropdown, then click to place an origin (blue marker) and a destination (pink marker). Routes calculate automatically.</p>
-<p>The street network is colored by shade coverage — red segments are fully exposed, green segments are well-shaded. The pink route is the shortest path by distance; the blue route maximizes shade using the weighted cost function.</p>
+<p>Select a scenario from the dropdown, then click to place an origin (blue marker) and a destination (red marker). Routes calculate automatically.</p>
+<p>The street network is colored by shade coverage; red segments are fully exposed, green segments are well-shaded. The pink route is the shortest path by distance. The blue route maximizes shade using a weighted cost function.</p>
 <hr>
 </section>
 <section id="how-routes-are-calculated" class="level2">
 <h2 class="anchored" data-anchor-id="how-routes-are-calculated">How routes are calculated</h2>
 <p><strong>Shortest path:</strong> <code>cost = length</code></p>
 <p><strong>Shadiest path:</strong> <code>cost = length × (1 - 0.3 × shade)</code></p>
-<p>A fully shaded segment costs 30% less than an equivalent unshaded one. The weight of 0.3 was chosen to allow meaningful shade improvement without producing impractical detours — typically 10-15% extra distance for 30-50% more shade.</p>
+<p>A fully shaded segment costs 30% less than an equivalent unshaded one. The weight of 0.3 was chosen to allow meaningful shade improvement without producing impractical detours, typically 10-15% extra distance for 30-50% more shade.</p>
 <p>Route calculation runs entirely client-side using precomputed edge weights across four JSON files (nodes, edges, scenarios, metadata). No server required.</p>
 <hr>
 </section>

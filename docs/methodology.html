@@ -174,12 +174,12 @@ window.Quarto = {
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./appendix.html"> 
-<span class="menu-text">Technical Appendix</span></a>
+<span class="menu-text">Code &amp; References</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/kavanaraju/Pedestrian-Shade-Routing"> <i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/kavanaraju/nadi"> <i class="bi bi-github" role="img">
 </i> 
 <span class="menu-text"></span></a>
   </li>  
@@ -359,12 +359,12 @@ window.Quarto = {
 <p>Routes are calculated using Dijkstra’s algorithm with two cost functions:</p>
 <p><strong>Shortest path:</strong> <span class="math display">\[\text{cost} = \text{length}\]</span></p>
 <p><strong>Shade-weighted path:</strong> <span class="math display">\[\text{cost} = \text{length} \times (1 - 0.3 \times \text{shade})\]</span></p>
-<p>A fully shaded segment (<span class="math inline">\(\text{shade} = 1\)</span>) has an effective cost of <span class="math inline">\(\text{length} \times 0.7\)</span>. An unshaded segment costs its full length. The weight <span class="math inline">\(w = 0.3\)</span> was chosen to allow meaningful shade improvement without producing impractical detours.</p>
+<p>A fully shaded segment has an effective cost of <span class="math inline">\(\text{length} \times 0.7\)</span>. An unshaded segment costs its full length. The weight <span class="math inline">\(w = 0.3\)</span> was chosen to allow meaningful shade improvement without producing impractical detours.</p>
 <p>Three test routes to SEPTA stations were analyzed:</p>
 <ol type="1">
-<li>Spruce St &amp; 38th → 40th St Station (~780m)</li>
-<li>Lancaster Ave &amp; 36th → 34th St Station (~470m)</li>
-<li>Spruce Hill → 46th St Station (~580m)</li>
+<li>Spruce St &amp; 38th to 40th St Station (~780m)</li>
+<li>Lancaster Ave &amp; 36th to 34th St Station (~470m)</li>
+<li>Spruce Hill to 46th St Station (~580m)</li>
 </ol>
 <hr>
 </section>
@@ -378,7 +378,7 @@ window.Quarto = {
 <h2 class="anchored" data-anchor-id="technical-specifications">Technical specifications</h2>
 <p><strong>Coordinate systems</strong> - Analysis: Pennsylvania State Plane South (EPSG:2272), US Survey Feet - Output: WGS84 (EPSG:4326)</p>
 <p><strong>LiDAR specs</strong> - Point density: 8-15 pts/m² - Vertical accuracy: ~10cm RMSE - Classification: ASPRS LAS 1.4 - Processing: Rasterized to 3-foot grid cells</p>
-<p><strong>Computational performance</strong> - LiDAR processing: ~30 minutes (18 tiles) - Shade calculation: ~2 hours (8 scenarios × 23k segments) - Route optimization: &lt;1 second per route pair</p>
+<p><strong>Computational performance</strong> - LiDAR processing: ~30 minutes (18 tiles) - Shade calculation: ~2 hours (8 scenarios x 23k segments) - Route optimization: less than 1 second per route pair</p>
 <hr>
 </section>
 <section id="validation" class="level2">

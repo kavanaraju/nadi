@@ -171,14 +171,14 @@ ul.task-list li input[type="checkbox"] {
 <hr>
 <section id="network-coverage" class="level2">
 <h2 class="anchored" data-anchor-id="network-coverage">Network coverage</h2>
-<p>The analysis covers 23,486 pedestrian street segments across 4.2 square miles of University City, with LiDAR height data available for 99.7% of buildings in the study area. Eight temporal scenarios were modeled — summer, winter, and spring/fall at morning, midday, and evening sun positions.</p>
+<p>The analysis covers 23,486 pedestrian street segments across 4.2 square miles of University City, with LiDAR height data available for 99.7% of buildings in the study area. Eight temporal scenarios were modeled: summer, winter, and spring/fall at morning, midday, and evening sun positions.</p>
 <p><img src="figures/study_area_overview.png" class="img-fluid" style="width:100.0%"></p>
 <hr>
 </section>
 <section id="shade-varies-dramatically-by-time-of-day-and-season" class="level2">
 <h2 class="anchored" data-anchor-id="shade-varies-dramatically-by-time-of-day-and-season">Shade varies dramatically by time of day and season</h2>
 <p><img src="figures/shade_heatmap_all_scenarios.png" class="img-fluid" style="width:100.0%"></p>
-<p>Mean shade coverage ranges from 61.5% on winter mornings to 24.2% on summer middays — a 2.5x difference across the same street network. The network that appears green (well-shaded) in winter reads almost entirely red (exposed) at summer midday.</p>
+<p>Mean shade coverage ranges from 61.5% on winter mornings to 24.2% on summer middays, a 2.5x difference across the same street network. The network that appears green (well-shaded) in winter reads almost entirely red (exposed) at summer midday.</p>
 <p><img src="figures/summer_vs_winter_comparison.png" class="img-fluid" style="width:100.0%"></p>
 <table class="caption-top table">
 <thead>
@@ -232,7 +232,7 @@ ul.task-list li input[type="checkbox"] {
 </tbody>
 </table>
 <p><img src="figures/temporal_comparison.png" class="img-fluid" style="width:100.0%"></p>
-<p>The distribution of shade scores also shifts with season. Summer midday is right-skewed — most segments have low coverage. Winter morning is left-skewed — most segments are well-shaded. Spring and fall sit closer to a normal distribution.</p>
+<p>The distribution of shade scores also shifts with season. Summer midday is right-skewed; most segments have low coverage. Winter morning is left-skewed; most segments are well-shaded. Spring and fall sit closer to a normal distribution.</p>
 <p><img src="figures/shade_distributions.png" class="img-fluid" style="width:100.0%"></p>
 <p><img src="figures/shade_boxplot_comparison.png" class="img-fluid" style="width:100.0%"></p>
 <hr>
@@ -240,14 +240,14 @@ ul.task-list li input[type="checkbox"] {
 <section id="buildings-and-trees-contribute-differently" class="level2">
 <h2 class="anchored" data-anchor-id="buildings-and-trees-contribute-differently">Buildings and trees contribute differently</h2>
 <p><img src="figures/building_vs_tree_contribution.png" class="img-fluid" style="width:100.0%"></p>
-<p>In winter, low sun angles cast long building shadows that account for 74.4% of network shade coverage. In summer, the sun moves overhead and building shadows shorten considerably — tree canopy becomes the dominant source at 35.9%, compared to 16.3% from buildings.</p>
+<p>In winter, low sun angles cast long building shadows that account for 74.4% of network shade coverage. In summer, the sun moves overhead and building shadows shorten considerably; tree canopy becomes the dominant source at 35.9%, compared to 16.3% from buildings.</p>
 <p>This has a direct implication for street tree investment: canopy programs have the most measurable impact on pedestrian thermal comfort during the months when it matters most.</p>
 <hr>
 </section>
 <section id="shade-deserts-concentrate-on-commercial-corridors" class="level2">
 <h2 class="anchored" data-anchor-id="shade-deserts-concentrate-on-commercial-corridors">Shade deserts concentrate on commercial corridors</h2>
 <p><img src="figures/shade_corridors_map.png" class="img-fluid" style="width:100.0%"></p>
-<p>During summer midday, the worst-shaded segments (0-20% coverage) concentrate on Market Street, Chestnut Street, and University Avenue — the corridors with the most pedestrian activity. Tree-lined residential streets like Spruce, Pine, and Locust Walk maintain significantly higher coverage.</p>
+<p>During summer midday, the worst-shaded segments (0-20% coverage) concentrate on Market Street, Chestnut Street, and University Avenue. Tree-lined residential streets like Spruce, Pine, and Locust Walk maintain significantly higher coverage.</p>
 <hr>
 </section>
 <section id="route-comparisons" class="level2">
@@ -261,7 +261,7 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="limitations" class="level2">
 <h2 class="anchored" data-anchor-id="limitations">Limitations</h2>
-<p>The current model assumes clear sky conditions and uses LiDAR data from 2018-2020, so it does not reflect recent construction or canopy changes. Tree shade is modeled using a fixed seasonal weight rather than species-specific leaf-on/leaf-off adjustment. The model captures shade as area coverage on a buffered street segment, not as a continuous thermal comfort index — humidity, wind, and surface reflectance are not included.</p>
+<p>The current model assumes clear sky conditions and uses LiDAR data from 2018-2020, so it does not reflect recent construction or canopy changes. Tree shade is modeled using a fixed seasonal weight rather than species-specific leaf-on/leaf-off adjustment. The model captures shade as area coverage on a buffered street segment, not as a continuous thermal comfort index; humidity, wind, and surface reflectance are not included.</p>
 <hr>
 </section>
 <section id="conclusions" class="level2">

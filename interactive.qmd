@@ -13,7 +13,7 @@ Click on the map to plan shade-optimized routes across University City. Set an o
 
 ## Using the map
 
-Select a scenario from the dropdown, then click to place an origin (blue marker) and a destination (red marker). Routes calculate automatically.
+Select a scenario from the dropdown, then click to place an origin (blue marker) and a destination (pink marker). Routes calculate automatically.
 
 The street network is colored by shade coverage — red segments are fully exposed, green segments are well-shaded. The pink route is the shortest path by distance; the blue route maximizes shade using the weighted cost function.
 

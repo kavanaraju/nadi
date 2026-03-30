@@ -772,9 +772,9 @@
   {
     "objectID": "results.html#conclusions",
     "href": "results.html#conclusions",
-    "title": "Results & Findings",
+    "title": "Results",
     "section": "Conclusions",
-    "text": "Conclusions\n\nTechnical Success\nThis analysis demonstrates:\n\nLiDAR-based shade modeling works at city scale\nGeometric shadow calculations are accurate (98%+ validation)\nTemporal variation is significant and measurable\nRaster-based methods enable real-time routing\n\n\n\n\nPractical Viability\nShade-optimized routing is feasible:\n\nRoutes exist that balance distance and shade\nTrade-offs are acceptable (10-15% detour, 30-50% shade gain)\nUser adoption likely for heat-sensitive populations\nIntegration with existing apps is straightforward\n\n\n\n\nPolicy Impact\nClear investment priorities identified:\n\nQuick-win shade structures provide immediate benefit\nNetwork-wide program achievable at reasonable cost\nStrong ROI through health, comfort, and economic benefits\n\n\n\n\nMethodological Innovation\nThis work contributes:\n\nFirst LiDAR-based pedestrian shade routing for Philadelphia\nReplicable framework for other cities\nOpen-source implementation\nIntegration of remote sensing + network analysis + policy"
+    "text": "Conclusions\nShade-optimized routing is feasible at neighborhood scale using publicly available LiDAR data. The methodology is reproducible and the trade-offs are acceptable for heat-sensitive pedestrians. The spatial analysis points to specific corridors where canopy investment would have the highest network-wide impact.\nTry the interactive map → Methodology → Code and notebooks →"
   },
   {
     "objectID": "results.html#final-statement",
@@ -816,7 +816,7 @@
     "href": "results.html#shade-varies-dramatically-by-time-of-day-and-season",
     "title": "Results",
     "section": "Shade varies dramatically by time of day and season",
-    "text": "Shade varies dramatically by time of day and season\n\nMean shade coverage ranges from 61.5% on winter mornings to 24.2% on summer middays — a 2.5x difference across the same street network. The network that appears green (well-shaded) in winter reads almost entirely red (exposed) at summer midday.\n![](figures/summer_vs_winter_comparison"
+    "text": "Shade varies dramatically by time of day and season\n\nMean shade coverage ranges from 61.5% on winter mornings to 24.2% on summer middays — a 2.5x difference across the same street network. The network that appears green (well-shaded) in winter reads almost entirely red (exposed) at summer midday.\n\n\n\n\nScenario\nMean shade\nSegments above 50% shade\n\n\n\n\nWinter morning\n61.5%\n59%\n\n\nWinter midday\n41.3%\n38.5%\n\n\nSummer evening\n38.6%\n33.7%\n\n\nSummer morning\n34.3%\n26.1%\n\n\nSpring midday\n32.4%\n23.6%\n\n\nFall midday\n31.8%\n22.3%\n\n\nSummer midday\n24.2%\n11.2%\n\n\nWinter evening\n0%\n0%\n\n\n\n\nThe distribution of shade scores also shifts with season. Summer midday is right-skewed — most segments have low coverage. Winter morning is left-skewed — most segments are well-shaded. Spring and fall sit closer to a normal distribution."
   },
   {
     "objectID": "index.html#what-the-data-shows",
@@ -879,7 +879,7 @@
     "href": "interactive.html#using-the-map",
     "title": "Interactive Map",
     "section": "Using the map",
-    "text": "Using the map\nSelect a scenario from the dropdown, then click to place an origin (blue marker) and a destination (red marker). Routes calculate automatically.\nThe street network is colored by shade coverage — red segments are fully exposed, green segments are well-shaded. The pink route is the shortest path by distance; the blue route maximizes shade using the weighted cost function."
+    "text": "Using the map\nSelect a scenario from the dropdown, then click to place an origin (blue marker) and a destination (pink marker). Routes calculate automatically.\nThe street network is colored by shade coverage — red segments are fully exposed, green segments are well-shaded. The pink route is the shortest path by distance; the blue route maximizes shade using the weighted cost function."
   },
   {
     "objectID": "interactive.html#how-routes-are-calculated",
@@ -887,5 +887,33 @@
     "title": "Interactive Map",
     "section": "How routes are calculated",
     "text": "How routes are calculated\nShortest path: cost = length\nShadiest path: cost = length × (1 - 0.3 × shade)\nA fully shaded segment costs 30% less than an equivalent unshaded one. The weight of 0.3 was chosen to allow meaningful shade improvement without producing impractical detours — typically 10-15% extra distance for 30-50% more shade.\nRoute calculation runs entirely client-side using precomputed edge weights across four JSON files (nodes, edges, scenarios, metadata). No server required."
+  },
+  {
+    "objectID": "results.html#buildings-and-trees-contribute-differently",
+    "href": "results.html#buildings-and-trees-contribute-differently",
+    "title": "Results",
+    "section": "Buildings and trees contribute differently",
+    "text": "Buildings and trees contribute differently\n\nIn winter, low sun angles cast long building shadows that account for 74.4% of network shade coverage. In summer, the sun moves overhead and building shadows shorten considerably — tree canopy becomes the dominant source at 35.9%, compared to 16.3% from buildings.\nThis has a direct implication for street tree investment: canopy programs have the most measurable impact on pedestrian thermal comfort during the months when it matters most."
+  },
+  {
+    "objectID": "results.html#shade-deserts-concentrate-on-commercial-corridors",
+    "href": "results.html#shade-deserts-concentrate-on-commercial-corridors",
+    "title": "Results",
+    "section": "Shade deserts concentrate on commercial corridors",
+    "text": "Shade deserts concentrate on commercial corridors\n\nDuring summer midday, the worst-shaded segments (0-20% coverage) concentrate on Market Street, Chestnut Street, and University Avenue — the corridors with the most pedestrian activity. Tree-lined residential streets like Spruce, Pine, and Locust Walk maintain significantly higher coverage."
+  },
+  {
+    "objectID": "results.html#route-comparisons",
+    "href": "results.html#route-comparisons",
+    "title": "Results",
+    "section": "Route comparisons",
+    "text": "Route comparisons\nThree routes to SEPTA stations were analyzed comparing the shortest path to the shadiest path under each scenario.\n\n\n\nAcross all three routes, the shadiest path added roughly 100 meters of distance and 1-2 minutes of walking time in exchange for 30-50% more shade coverage. The trade-off is most meaningful during summer midday, when shade on the default shortest route drops below 20%."
+  },
+  {
+    "objectID": "results.html#limitations",
+    "href": "results.html#limitations",
+    "title": "Results",
+    "section": "Limitations",
+    "text": "Limitations\nThe current model assumes clear sky conditions and uses LiDAR data from 2018-2020, so it does not reflect recent construction or canopy changes. Tree shade is modeled using a fixed seasonal weight rather than species-specific leaf-on/leaf-off adjustment. The model captures shade as area coverage on a buffered street segment, not as a continuous thermal comfort index — humidity, wind, and surface reflectance are not included."
   }
 ]

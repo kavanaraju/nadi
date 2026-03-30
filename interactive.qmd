@@ -1,0 +1,38 @@
+---
+title: "Interactive Map"
+format:
+  html:
+    toc: false
+---
+
+Click on the map to plan shade-optimized routes across University City. Set an origin and destination, select a time scenario, and compare the shortest path against the shadiest path.
+
+<iframe src="map.html" width="100%" height="700px" style="border: 1px solid #ddd; border-radius: 8px;"></iframe>
+
+---
+
+## Using the map
+
+Select a scenario from the dropdown, then click to place an origin (blue marker) and a destination (red marker). Routes calculate automatically.
+
+The street network is colored by shade coverage — red segments are fully exposed, green segments are well-shaded. The pink route is the shortest path by distance; the blue route maximizes shade using the weighted cost function.
+
+---
+
+## How routes are calculated
+
+**Shortest path:** `cost = length`
+
+**Shadiest path:** `cost = length × (1 - 0.3 × shade)`
+
+A fully shaded segment costs 30% less than an equivalent unshaded one. The weight of 0.3 was chosen to allow meaningful shade improvement without producing impractical detours — typically 10-15% extra distance for 30-50% more shade.
+
+Route calculation runs entirely client-side using precomputed edge weights across four JSON files (nodes, edges, scenarios, metadata). No server required.
+
+---
+
+## Limitations
+
+Shade scores are based on 2018-2020 LiDAR data and may not reflect recent construction or canopy changes. The model assumes clear sky conditions and does not account for clouds, wind, humidity, or surface temperature.
+
+[← Results](results.qmd) | [Code →](appendix.qmd)

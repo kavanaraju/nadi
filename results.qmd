@@ -1,0 +1,23 @@
+---
+title: "Results"
+---
+
+![](figures/dashboard_summary.png){width=100%}
+
+---
+
+## Network coverage
+
+The analysis covers 23,486 pedestrian street segments across 4.2 square miles of University City, with LiDAR height data available for 99.7% of buildings in the study area. Eight temporal scenarios were modeled — summer, winter, and spring/fall at morning, midday, and evening sun positions.
+
+![](figures/study_area_overview.png){width=100%}
+
+---
+
+## Shade varies dramatically by time of day and season
+
+![](figures/shade_heatmap_all_scenarios.png){width=100%}
+
+Mean shade coverage ranges from 61.5% on winter mornings to 24.2% on summer middays — a 2.5x difference across the same street network. The network that appears green (well-shaded) in winter reads almost entirely red (exposed) at summer midday.
+
+![](figures/summer_vs_winter_comparison

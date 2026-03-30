@@ -1,0 +1,114 @@
+---
+title: "Methodology"
+---
+
+The analysis runs in four stages: data acquisition, shade calculation, route optimization, and visualization.
+
+---
+
+## 1. Data
+
+| Dataset | Source | Specifications |
+|---|---|---|
+| LiDAR point clouds | USGS 3DEP Program (2018-2020) | 18 tiles, ~8-15 pts/m², Class 5 (vegetation) & 6 (buildings) |
+| Building footprints | PASDA Pennsylvania Statewide | Vector polygons |
+| Street network | OpenStreetMap | Pedestrian-accessible paths only |
+| Transit stops | SEPTA GTFS | Market-Frankford Line stations |
+
+The street network was extracted using `osmnx` and filtered to pedestrian-accessible paths. Building and tree heights were derived from LiDAR point cloud classification, rasterized to 3-foot grid cells.
+```python
+import osmnx as ox
+
+network = ox.graph_from_place(
+    "University City, Philadelphia, PA",
+    network_type='walk'
+)
+
+edges = ox.graph_to_gdfs(network, nodes=False)
+```
+
+**Outputs:** 23,486 pedestrian segments, 99.7% building LiDAR coverage, 2.1M+ individual tree points.
+
+---
+
+## 2. Shade calculation
+
+Sun position was modeled using `pvlib` for Philadelphia (40.0°N, 75.2°W) across 8 scenarios:
+
+| Scenario | Time | Sun altitude | Shadow character |
+|---|---|---|---|
+| Summer morning | 7:00 AM | 36.9° | Long shadows |
+| Summer midday | 12:00 PM | 68.9° | Short shadows |
+| Summer evening | 5:00 PM | 26.5° | Long shadows |
+| Winter morning | 8:00 AM | 14.2° | Very long shadows |
+| Winter midday | 12:00 PM | 26.6° | Moderate shadows |
+| Winter evening | 4:00 PM | Below horizon | No shadows |
+| Spring midday | 12:00 PM | 47.8° | Moderate shadows |
+| Fall midday | 12:00 PM | 48.6° | Moderate shadows |
+
+For each building or tree at height $h$ with sun at altitude $\alpha$:
+
+$$\text{shadow\_length} = \frac{h}{\tan(\alpha)}$$
+
+Shadow direction = $(azimuth + 180°) \mod 360°$
+
+Each street segment was buffered 5 meters per side (~33 feet total) to approximate the pedestrian zone, capturing sidewalks, tree pits, and building setbacks. Shade was measured as area coverage within that buffer.
+
+The combined shade score weights buildings more heavily than trees, reflecting their more consistent shadow geometry:
+
+$$\text{shade}_{combined} = 0.6 \times \text{shade}_{buildings} + 0.4 \times \text{shade}_{trees}$$
+
+---
+
+## 3. Route optimization
+
+The street network is represented as an undirected planar graph. Each edge carries segment length and shade scores for all 8 scenarios.
+
+Routes are calculated using Dijkstra's algorithm with two cost functions:
+
+**Shortest path:**
+$$\text{cost} = \text{length}$$
+
+**Shade-weighted path:**
+$$\text{cost} = \text{length} \times (1 - 0.3 \times \text{shade})$$
+
+A fully shaded segment ($\text{shade} = 1$) has an effective cost of $\text{length} \times 0.7$. An unshaded segment costs its full length. The weight $w = 0.3$ was chosen to allow meaningful shade improvement without producing impractical detours.
+
+Three test routes to SEPTA stations were analyzed:
+
+1. Spruce St & 38th → 40th St Station (~780m)
+2. Lancaster Ave & 36th → 34th St Station (~470m)
+3. Spruce Hill → 46th St Station (~580m)
+
+---
+
+## 4. Visualization
+
+Static maps show shortest path (blue) versus shadiest path (green) with shade coverage as a background heatmap and route-level metrics (distance, shade score, detour percentage).
+
+The interactive application runs Dijkstra in the browser using precomputed edge weights exported as GeoJSON, with scenario switching and trade-off metrics displayed on route selection.
+
+---
+
+## Technical specifications
+
+**Coordinate systems**
+- Analysis: Pennsylvania State Plane South (EPSG:2272), US Survey Feet
+- Output: WGS84 (EPSG:4326)
+
+**LiDAR specs**
+- Point density: 8-15 pts/m²
+- Vertical accuracy: ~10cm RMSE
+- Classification: ASPRS LAS 1.4
+- Processing: Rasterized to 3-foot grid cells
+
+**Computational performance**
+- LiDAR processing: ~30 minutes (18 tiles)
+- Shade calculation: ~2 hours (8 scenarios × 23k segments)
+- Route optimization: <1 second per route pair
+
+---
+
+## Validation
+
+Shadow directions were visually verified against expected sun position for each scenario. Winter shadows were confirmed longer than summer equivalents. Building shadows were spot-checked against structure locations. Shade-optimized routes were manually reviewed to confirm they traverse high-shade segments rather than artifacts of the cost function.

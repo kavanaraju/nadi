@@ -1,7 +1,6 @@
 ---
 title: "Nadi"
 subtitle: "Shade-aware pedestrian routing in University City, Philadelphia"
-author: "Kavana Raju"
 format:
   html:
     toc: false
@@ -66,33 +65,12 @@ The spatial pattern of shade deserts concentrates on Market Street, Chestnut Str
 
 ## Results
 
-::: {.grid}
-
-::: {.g-col-3}
-**Network**  
-23,486 segments  
-27 miles analyzed
-:::
-
-::: {.g-col-3}
-**Best coverage**  
-Winter morning  
-61.5% average shade
-:::
-
-::: {.g-col-3}
-**Worst coverage**  
-Summer midday  
-24.2% average shade
-:::
-
-::: {.g-col-3}
-**Typical trade-off**  
-+10-15% distance  
-+30-50% shade
-:::
-
-:::
+| | |
+|---|---|
+| **Network** | 23,486 segments, 27 miles analyzed |
+| **Best coverage** | Winter morning, 61.5% average shade |
+| **Worst coverage** | Summer midday, 24.2% average shade |
+| **Typical trade-off** | +10-15% distance for +30-50% shade |
 
 ![](figures/shade_distributions.png){width=100%}
 

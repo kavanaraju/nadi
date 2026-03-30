@@ -830,7 +830,7 @@
     "href": "index.html#results",
     "title": "Nadi",
     "section": "Results",
-    "text": "Results\n\n\nNetwork\n23,486 segments\n27 miles analyzed\n\n\nBest coverage\nWinter morning\n61.5% average shade\n\n\nWorst coverage\nSummer midday\n24.2% average shade\n\n\nTypical trade-off\n+10-15% distance\n+30-50% shade"
+    "text": "Results\n\n\n\nNetwork\n23,486 segments, 27 miles analyzed\n\n\nBest coverage\nWinter morning, 61.5% average shade\n\n\nWorst coverage\nSummer midday, 24.2% average shade\n\n\nTypical trade-off\n+10-15% distance for +30-50% shade"
   },
   {
     "objectID": "index.html#data-sources",
